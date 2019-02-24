@@ -8,7 +8,7 @@ CUSTOM_OTA_VERSION_CODE := oreo
 endif
 
 CUSTOM_PROPERTIES += \
-    org.pixelexperience.ota.version_code=$(CUSTOM_OTA_VERSION_CODE)
+    org.androidoneexperience.ota.version_code=$(CUSTOM_OTA_VERSION_CODE)
 
 PRODUCT_PACKAGES += \
     Updates

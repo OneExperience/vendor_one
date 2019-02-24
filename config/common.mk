@@ -1,4 +1,4 @@
-PRODUCT_BRAND ?= PixelExperience
+PRODUCT_BRAND ?= AndroidOneExperience
 
 PRODUCT_BUILD_PROP_OVERRIDES += BUILD_UTC_DATE=0
 
@@ -52,40 +52,40 @@ endif
 
 # Backup Tool
 PRODUCT_COPY_FILES += \
-    vendor/aosp/prebuilt/common/bin/backuptool.sh:install/bin/backuptool.sh \
-    vendor/aosp/prebuilt/common/bin/backuptool.functions:install/bin/backuptool.functions \
-    vendor/aosp/prebuilt/common/bin/50-base.sh:system/addon.d/50-base.sh \
-    vendor/aosp/prebuilt/common/bin/blacklist:system/addon.d/blacklist
+    vendor/one/prebuilt/common/bin/backuptool.sh:install/bin/backuptool.sh \
+    vendor/one/prebuilt/common/bin/backuptool.functions:install/bin/backuptool.functions \
+    vendor/one/prebuilt/common/bin/50-base.sh:system/addon.d/50-base.sh \
+    vendor/one/prebuilt/common/bin/blacklist:system/addon.d/blacklist
 
 ifeq ($(AB_OTA_UPDATER),true)
 PRODUCT_COPY_FILES += \
-    vendor/aosp/prebuilt/common/bin/backuptool_ab.sh:system/bin/backuptool_ab.sh \
-    vendor/aosp/prebuilt/common/bin/backuptool_ab.functions:system/bin/backuptool_ab.functions \
-    vendor/aosp/prebuilt/common/bin/backuptool_postinstall.sh:system/bin/backuptool_postinstall.sh
+    vendor/one/prebuilt/common/bin/backuptool_ab.sh:system/bin/backuptool_ab.sh \
+    vendor/one/prebuilt/common/bin/backuptool_ab.functions:system/bin/backuptool_ab.functions \
+    vendor/one/prebuilt/common/bin/backuptool_postinstall.sh:system/bin/backuptool_postinstall.sh
 endif
 
 # Some permissions
 PRODUCT_COPY_FILES += \
-    vendor/aosp/config/permissions/backup.xml:system/etc/sysconfig/backup.xml \
-    vendor/aosp/config/permissions/privapp-permissions-aosp.xml:system/etc/permissions/privapp-permissions-aosp.xml
+    vendor/one/config/permissions/backup.xml:system/etc/sysconfig/backup.xml \
+    vendor/one/config/permissions/privapp-permissions-one.xml:system/etc/permissions/privapp-permissions-one.xml
 
 # init.d support
 PRODUCT_COPY_FILES += \
-    vendor/aosp/prebuilt/common/bin/sysinit:system/bin/sysinit
+    vendor/one/prebuilt/common/bin/sysinit:system/bin/sysinit
 
 ifneq ($(TARGET_BUILD_VARIANT),user)
 # userinit support
 PRODUCT_COPY_FILES += \
-    vendor/aosp/prebuilt/common/etc/init.d/90userinit:system/etc/init.d/90userinit
+    vendor/one/prebuilt/common/etc/init.d/90userinit:system/etc/init.d/90userinit
 endif
 
 # Copy all custom init rc files
-$(foreach f,$(wildcard vendor/aosp/prebuilt/common/etc/init/*.rc),\
+$(foreach f,$(wildcard vendor/one/prebuilt/common/etc/init/*.rc),\
     $(eval PRODUCT_COPY_FILES += $(f):system/etc/init/$(notdir $f)))
 
 # Copy over added mimetype supported in libcore.net.MimeUtils
 PRODUCT_COPY_FILES += \
-    vendor/aosp/prebuilt/common/lib/content-types.properties:system/lib/content-types.properties
+    vendor/one/prebuilt/common/lib/content-types.properties:system/lib/content-types.properties
 
 # Enable SIP+VoIP on all targets
 PRODUCT_COPY_FILES += \
@@ -129,8 +129,8 @@ PRODUCT_PACKAGES += \
 
 # Charging sounds
 PRODUCT_COPY_FILES += \
-    vendor/aosp/prebuilt/common/media/audio/BatteryPlugged.ogg:system/media/audio/ui/BatteryPlugged.ogg \
-    vendor/aosp/prebuilt/common/media/audio/BatteryPlugged_48k.ogg:system/media/audio/ui/BatteryPlugged_48k.ogg
+    vendor/one/prebuilt/common/media/audio/BatteryPlugged.ogg:system/media/audio/ui/BatteryPlugged.ogg \
+    vendor/one/prebuilt/common/media/audio/BatteryPlugged_48k.ogg:system/media/audio/ui/BatteryPlugged_48k.ogg
 
 # Filesystems tools
 PRODUCT_PACKAGES += \
@@ -143,7 +143,7 @@ PRODUCT_PACKAGES += \
 
 # Facelock fix
 PRODUCT_COPY_FILES += \
-    vendor/aosp/prebuilt/common/lib/libprotobuf-cpp-shit.so:system/lib/libprotobuf-cpp-shit.so
+    vendor/one/prebuilt/common/lib/libprotobuf-cpp-shit.so:system/lib/libprotobuf-cpp-shit.so
 
 # Launcher3
 PRODUCT_PACKAGES += \
@@ -178,19 +178,19 @@ PRODUCT_PACKAGES_DEBUG += \
     procrank \
     strace
 
-DEVICE_PACKAGE_OVERLAYS += vendor/aosp/overlay/common
+DEVICE_PACKAGE_OVERLAYS += vendor/one/overlay/common
 
 # Branding
-include vendor/aosp/config/branding.mk
+include vendor/one/config/branding.mk
 
 # OTA
-include vendor/aosp/config/ota.mk
+include vendor/one/config/ota.mk
 
 # GApps
-include vendor/aosp/config/gapps.mk
+include vendor/one/config/gapps.mk
 
-# Pixel Style
-include vendor/pixelstyle/config.mk
+# One Style
+include vendor/onestyle/config.mk
 
 # Themes
 include vendor/themes/config.mk

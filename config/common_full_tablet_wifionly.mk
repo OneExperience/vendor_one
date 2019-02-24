@@ -1,2 +1,2 @@
-# Inherit full common PixelExperience stuff
-$(call inherit-product, vendor/aosp/config/common_full.mk)
+# Inherit full common AndroidOneExperience stuff
+$(call inherit-product, vendor/one/config/common_full.mk)

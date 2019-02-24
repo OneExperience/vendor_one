@@ -1,4 +1,4 @@
-# Inherit common PixelExperience stuff
-$(call inherit-product, vendor/aosp/config/common.mk)
+# Inherit common AndroidOneExperience stuff
+$(call inherit-product, vendor/one/config/common.mk)
 
 PRODUCT_SIZE := full

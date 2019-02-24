@@ -4,11 +4,11 @@ IS_PHONE := true
 
 # Sensitive Phone Numbers list
 PRODUCT_COPY_FILES += \
-    vendor/aosp/prebuilt/common/etc/sensitive_pn.xml:system/etc/sensitive_pn.xml
+    vendor/one/prebuilt/common/etc/sensitive_pn.xml:system/etc/sensitive_pn.xml
 
 # World APN list
 PRODUCT_COPY_FILES += \
-    vendor/aosp/prebuilt/common/etc/apns-conf.xml:system/etc/apns-conf.xml
+    vendor/one/prebuilt/common/etc/apns-conf.xml:system/etc/apns-conf.xml
 
 # Telephony packages
 PRODUCT_PACKAGES += \
@@ -25,4 +25,4 @@ PRODUCT_SYSTEM_DEFAULT_PROPERTIES += \
     ro.config.ringtone=The_big_adventure.ogg
 
 # Inherit full common PixelExperience stuff
-$(call inherit-product, vendor/aosp/config/common_full.mk)
+$(call inherit-product, vendor/one/config/common_full.mk)
