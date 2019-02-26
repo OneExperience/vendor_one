@@ -122,6 +122,10 @@ PRODUCT_PACKAGES += \
     vim \
     wget \
     zip
+	
+# Bootanimation
+PRODUCT_COPY_FILES += \
+    vendor/one/media/bootanimation.zip:system/media/bootanimation.zip
 
 # Charger
 PRODUCT_PACKAGES += \
