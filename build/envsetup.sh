@@ -7,7 +7,7 @@ Additional functions:
 - mmmp:            Builds all of the modules in the supplied directories and pushes them to the device.
 - pixelgerrit:     A Git wrapper that fetches/pushes patch from/to PixelExperience Gerrit Review.
 - pixelrebase:     Rebase a Gerrit change and push it again.
-- aospremote:      Add git remote for matching AOSP repository.
+- oneremote:      Add git remote for matching One repository.
 - cafremote:       Add git remote for matching CodeAurora repository.
 - mka:             Builds using SCHED_BATCH on all processors.
 - mkap:            Builds the module(s) using mka and pushes them to the device.
@@ -68,7 +68,7 @@ function breakfast()
     local variant=$2
     unset LUNCH_MENU_CHOICES
     add_lunch_combo full-eng
-    for f in `/bin/ls vendor/aosp/vendorsetup.sh 2> /dev/null`
+    for f in `/bin/ls vendor/one/vendorsetup.sh 2> /dev/null`
         do
             echo "including $f"
             . $f
@@ -254,14 +254,14 @@ function dddclient()
    fi
 }
 
-function aospremote()
+function oneremote()
 {
     if ! git rev-parse --git-dir &> /dev/null
     then
         echo ".git directory not found. Please run this from the root directory of the Android repository you wish to set up."
         return 1
     fi
-    git remote rm aosp 2> /dev/null
+    git remote rm one 2> /dev/null
     local PROJECT=$(pwd -P | sed -e "s#$ANDROID_BUILD_TOP\/##; s#-caf.*##; s#\/default##")
     # Google moved the repo location in Oreo
     if [ $PROJECT = "build/make" ]
@@ -272,8 +272,8 @@ function aospremote()
     then
         local PFX="platform/"
     fi
-    git remote add aosp https://android.googlesource.com/$PFX$PROJECT
-    echo "Remote 'aosp' created"
+    git remote add one https://android.googlesource.com/$PFX$PROJECT
+    echo "Remote 'one' created"
 }
 
 function cafremote()
@@ -875,7 +875,7 @@ alias cmkap='dopush cmka'
 
 function repopick() {
     T=$(gettop)
-    $T/vendor/aosp/build/tools/repopick.py $@
+    $T/vendor/one/build/tools/repopick.py $@
 }
 
 function fixup_common_out_dir() {
@@ -906,7 +906,7 @@ if [ -d $(gettop)/prebuilts/snapdragon-llvm/toolchains ]; then
             export SDCLANG=true
             export SDCLANG_PATH=$(gettop)/prebuilts/snapdragon-llvm/toolchains/llvm-Snapdragon_LLVM_for_Android_4.0/prebuilt/linux-x86_64/bin
             export SDCLANG_PATH_2=$(gettop)/prebuilts/snapdragon-llvm/toolchains/llvm-Snapdragon_LLVM_for_Android_4.0/prebuilt/linux-x86_64/bin
-            export SDCLANG_LTO_DEFS=$(gettop)/vendor/aosp/build/core/sdllvm-lto-defs.mk
+            export SDCLANG_LTO_DEFS=$(gettop)/vendor/one/build/core/sdllvm-lto-defs.mk
             ;;
     esac
 fi
