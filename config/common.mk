@@ -193,4 +193,7 @@ include vendor/one/config/ota.mk
 # GApps
 include vendor/one/config/gapps.mk
 
+# One Style
+include vendor/onestyle/config.mk
+
 -include $(WORKSPACE)/build_env/image-auto-bits.mk
